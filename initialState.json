@@ -1,16 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from './reducers';
-//import Header from './components/Header';
-//import HelloWorld from './components/HelloWorld';
-import App from './routes/App';
-
-const initialState = {
-      "user":{},
-      "playing":{},
-      "myList": [],
+{
+    "initialState": {
+      "mylist": [],
       "trends": [
         {
           "id": 2,
@@ -171,13 +161,5 @@ const initialState = {
           "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
         }
       ]
-};
-
-const store = createStore(reducer, initialState);
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app'),
-);
+    }
+  }
