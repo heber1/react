@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-//import { loginRequest } from '../actions';
+import { loginRequest } from "../actions";
 import "../assets/styles/components/Login.scss";
 import googleIcon from "../assets/static/google-icon.png";
 import twitterIcon from "../assets/static/twitter-icon.png";
-import { ProgressPlugin } from "webpack";
+// import { ProgressPlugin } from "webpack";
 
-
-const Login = () => {
+const Login = (props) => {
   const [form, setValues] = useState({
-    email: '',
+    email: "",
   });
   const handleInput = (event) => {
     setValues({
@@ -20,18 +19,29 @@ const Login = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(form)
-    //props.loginRequest(form);
-    //props.history.push('/');
-
+    //console.log(form)
+    props.loginRequest(form);
+    props.history.push("/");
   };
   return (
     <section className="login">
       <section className="login__container">
         <h2>Inicia sesión</h2>
         <form className="login__container--form" onSubmit={handleSubmit}>
-          <input className="input" type="text" placeholder="Correo" name="Correo" onChange={handleInput} />
-          <input className="input" type="password" placeholder="Contraseña" name="password" onChange={handleInput} />
+          <input
+            className="input"
+            type="text"
+            placeholder="Correo"
+            name="Correo"
+            onChange={handleInput}
+          />
+          <input
+            className="input"
+            type="password"
+            placeholder="Contraseña"
+            name="password"
+            onChange={handleInput}
+          />
           <button className="button">Iniciar sesión</button>
           <div className="login__container--remember-me">
             <label>
@@ -43,7 +53,7 @@ const Login = () => {
         </form>
         <section className="login__container--social-media">
           <div>
-            <img src={googleIcon} /> Inicia sesión con Google
+            <img src={ googleIcon} /> Inicia sesión con Google
           </div>
           <div>
             <img src={twitterIcon} /> Inicia sesión con Twitter
@@ -57,8 +67,8 @@ const Login = () => {
     </section>
   );
 };
-/* const mapDispatchToProps = {
+const mapDispatchToProps = {
   loginRequest,
-}; */
-export default Login;
-//export default connect(null, mapDispatchToProps)(Login);
+};
+//export default Login;
+export default connect(null, mapDispatchToProps)(Login);
